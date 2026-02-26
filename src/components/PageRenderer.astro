@@ -1,0 +1,42 @@
+---
+/**
+ * Shared page rendering component. Used by all locale route files.
+ * Renders MDX content with BaseLayout, hero section, and prose styling.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { render } from 'astro:content';
+import type { Lang } from '../i18n/index';
+
+interface Props {
+  page: any;
+  lang: Lang;
+}
+
+const { page, lang } = Astro.props;
+const { Content } = await render(page);
+const seo = page.data.seo ?? { title: page.data.title, description: page.data.description };
+---
+
+<BaseLayout
+  title={seo.title}
+  description={seo.description}
+  lang={lang}
+  ogImage={seo.ogImage}
+  noindex={seo.noindex}
+  slug={page.data.slug}
+  translations={page.data.translations}
+>
+  <article>
+    <section class="bg-sitehub-dark text-white py-16 md:py-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="text-3xl md:text-5xl font-bold">{page.data.title}</h1>
+        {page.data.description && (
+          <p class="mt-4 text-lg text-white/80 max-w-2xl">{page.data.description}</p>
+        )}
+      </div>
+    </section>
+    <div class="prose max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>

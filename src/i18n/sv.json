@@ -1,0 +1,19 @@
+{
+  "nav.home": "Hem",
+  "nav.about": "Om oss",
+  "nav.services": "Tjänster",
+  "nav.technology": "Teknologi",
+  "nav.consultancy": "Rådgivning",
+  "nav.compliance": "Compliance",
+  "nav.betterSite": "Bättre byggplats",
+  "nav.projects": "Projekt",
+  "nav.contact": "Kontakta oss",
+  "footer.copyright": "Alla rättigheter förbehållna.",
+  "footer.cookiePolicy": "Cookie Policy",
+  "cookie.message": "Vi använder cookies för att förbättra din upplevelse.",
+  "cookie.accept": "Acceptera",
+  "cookie.decline": "Avvisa",
+  "lang.switch": "Byt språk",
+  "cta.learnMore": "Läs mer",
+  "cta.contactUs": "Kontakta oss"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "sitehub-dk",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "extract": "tsx tools/extract/src/index.ts"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^4.3.13",
+    "@astrojs/sitemap": "^3.7.0",
+    "@tailwindcss/vite": "^4.2.1",
+    "astro": "^5.18.0",
+    "tailwindcss": "^4.2.1"
+  }
+}

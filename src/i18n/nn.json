@@ -1,0 +1,19 @@
+{
+  "nav.home": "Heim",
+  "nav.about": "Om oss",
+  "nav.services": "Tenester",
+  "nav.technology": "Teknologi",
+  "nav.consultancy": "Rådgjeving",
+  "nav.compliance": "Compliance",
+  "nav.betterSite": "Betre byggeplass",
+  "nav.projects": "Prosjekter",
+  "nav.contact": "Kontakt oss",
+  "footer.copyright": "Alle rettar atterhaldne.",
+  "footer.cookiePolicy": "Cookie Policy",
+  "cookie.message": "Vi brukar informasjonskapslar for å forbetre opplevinga di.",
+  "cookie.accept": "Godta",
+  "cookie.decline": "Avvis",
+  "lang.switch": "Byt språk",
+  "cta.learnMore": "Les meir",
+  "cta.contactUs": "Kontakt oss"
+}

@@ -1,0 +1,19 @@
+{
+  "nav.home": "Forside",
+  "nav.about": "Om os",
+  "nav.services": "Service",
+  "nav.technology": "Teknologi",
+  "nav.consultancy": "Rådgivning",
+  "nav.compliance": "Data og compliance",
+  "nav.betterSite": "Bedre byggeplads",
+  "nav.projects": "Projekter",
+  "nav.contact": "Kontakt",
+  "footer.copyright": "Alle rettigheder forbeholdes.",
+  "footer.cookiePolicy": "Cookie Policy",
+  "cookie.message": "Vi bruger cookies for at forbedre din oplevelse.",
+  "cookie.accept": "Acceptér",
+  "cookie.decline": "Afvis",
+  "lang.switch": "Skift sprog",
+  "cta.learnMore": "Læs mere",
+  "cta.contactUs": "Kontakt os"
+}

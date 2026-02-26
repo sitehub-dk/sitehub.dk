@@ -1,0 +1,15 @@
+# Old WordPress URLs → New Astro URLs
+# Note: GitHub Pages does not natively support _redirects.
+# This file works with Cloudflare Pages or Netlify if used as hosting.
+
+/en/about/ /en/about/ 200
+/en/services/ /en/services/ 200
+/en/technology/ /en/technology/ 200
+/en/consultancy/ /en/consultancy/ 200
+/en/compliance/ /en/compliance/ 200
+/en/better-construction-site/ /en/better-construction-site/ 200
+/en/projects/ /en/projects/ 200
+/en/contact/ /en/contact/ 200
+/nn/* /nn/:splat 200
+/sv/* /sv/:splat 200
+/nl/* /nl/:splat 200

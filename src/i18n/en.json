@@ -1,0 +1,19 @@
+{
+  "nav.home": "Home",
+  "nav.about": "About",
+  "nav.services": "Services",
+  "nav.technology": "Technology",
+  "nav.consultancy": "Consultancy",
+  "nav.compliance": "Compliance",
+  "nav.betterSite": "Better construction site",
+  "nav.projects": "Projects",
+  "nav.contact": "Contact",
+  "footer.copyright": "All rights reserved.",
+  "footer.cookiePolicy": "Cookie Policy",
+  "cookie.message": "We use cookies to improve your experience.",
+  "cookie.accept": "Accept",
+  "cookie.decline": "Decline",
+  "lang.switch": "Switch language",
+  "cta.learnMore": "Learn more",
+  "cta.contactUs": "Contact us"
+}

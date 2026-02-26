@@ -1,0 +1,90 @@
+---
+import LanguageSwitcher from './LanguageSwitcher.astro';
+import { t, langPath, type Lang } from '../i18n/index';
+
+interface Props {
+  lang: Lang;
+  slug?: string;
+  translations?: Record<string, string>;
+}
+
+const { lang, slug = '', translations = {} } = Astro.props;
+const prefix = langPath(lang);
+
+const navItems = [
+  { key: 'nav.about', slugs: { da: 'om-os', en: 'about', nn: 'om-oss', sv: 'om-oss-sv', nl: 'over-ons' } },
+  { key: 'nav.betterSite', slugs: { da: 'bedre-byggeplads', en: 'better-construction-site', nn: 'bedre-byggeplass', sv: 'battre-byggplats', nl: 'better-construction-site-nl' } },
+  { key: 'nav.consultancy', slugs: { da: 'raadgivning', en: 'consultancy', nn: 'radgivning', sv: 'radgivning-sv', nl: 'advies' } },
+  { key: 'nav.services', slugs: { da: 'service', en: 'services', nn: 'service-nn', sv: 'service-sv', nl: 'service-nl' } },
+  { key: 'nav.compliance', slugs: { da: 'data-og-compliance', en: 'compliance', nn: 'compliance-nn', sv: 'compliance-sv', nl: 'compliance-nl' } },
+  { key: 'nav.technology', slugs: { da: 'teknologi', en: 'technology', nn: 'teknologi-nn', sv: 'teknologi-sv', nl: 'technologie' } },
+  { key: 'nav.projects', slugs: { da: 'projekter', en: 'projects', nn: 'prosjekter', sv: 'projekt', nl: 'projecten' } },
+  { key: 'nav.contact', slugs: { da: 'kontakt', en: 'contact', nn: 'kontakt-oss', sv: 'kontakta-oss', nl: 'contact-ons' } },
+];
+---
+
+<header class="sticky top-0 z-50 bg-sitehub-dark shadow-lg">
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <!-- Logo -->
+      <a href={`${prefix}/`} class="flex-shrink-0">
+        <span class="text-sitehub-accent font-bold text-xl tracking-tight">SiteHub</span>
+      </a>
+
+      <!-- Desktop nav -->
+      <div class="hidden lg:flex items-center gap-1">
+        {navItems.map((item) => {
+          const itemSlug = item.slugs[lang] ?? item.slugs.da;
+          return (
+            <a
+              href={`${prefix}/${itemSlug}/`}
+              class="px-3 py-2 text-sm text-white/80 hover:text-sitehub-accent transition-colors rounded-md"
+            >
+              {t(lang, item.key)}
+            </a>
+          );
+        })}
+        <LanguageSwitcher lang={lang} slug={slug} translations={translations} />
+      </div>
+
+      <!-- Mobile hamburger -->
+      <button
+        id="mobile-menu-btn"
+        class="lg:hidden text-white p-2"
+        aria-label="Toggle menu"
+        aria-expanded="false"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile nav -->
+    <div id="mobile-menu" class="hidden lg:hidden pb-4">
+      {navItems.map((item) => {
+        const itemSlug = item.slugs[lang] ?? item.slugs.da;
+        return (
+          <a
+            href={`${prefix}/${itemSlug}/`}
+            class="block px-3 py-2 text-white/80 hover:text-sitehub-accent transition-colors"
+          >
+            {t(lang, item.key)}
+          </a>
+        );
+      })}
+      <div class="px-3 pt-2 border-t border-white/10 mt-2">
+        <LanguageSwitcher lang={lang} slug={slug} translations={translations} />
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  btn?.addEventListener('click', () => {
+    const open = menu?.classList.toggle('hidden') === false;
+    btn.setAttribute('aria-expanded', String(open));
+  });
+</script>

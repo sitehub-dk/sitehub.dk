@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Side ikke fundet — SiteHub"
+  description="Den side du leder efter findes ikke."
+  lang="da"
+  noindex={true}
+>
+  <section class="bg-sitehub-dark text-white py-20 md:py-32 flex-1 flex items-center">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-sitehub-accent font-semibold text-lg mb-4">404</p>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+        Side ikke fundet
+      </h1>
+      <p class="text-lg md:text-xl text-white/80 max-w-xl mx-auto mb-10 leading-relaxed">
+        Den side du leder efter findes desvaerre ikke eller er blevet flyttet.
+      </p>
+      <a
+        href="/"
+        class="inline-block px-8 py-3 bg-sitehub-accent text-sitehub-dark font-semibold rounded-lg hover:bg-sitehub-accent-hover transition-colors"
+      >
+        Tilbage til forsiden
+      </a>
+    </div>
+  </section>
+</BaseLayout>

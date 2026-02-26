@@ -1,0 +1,19 @@
+{
+  "nav.home": "Home",
+  "nav.about": "Over ons",
+  "nav.services": "Diensten",
+  "nav.technology": "Technologie",
+  "nav.consultancy": "Advies",
+  "nav.compliance": "Compliance",
+  "nav.betterSite": "Betere bouwplaats",
+  "nav.projects": "Projecten",
+  "nav.contact": "Contact",
+  "footer.copyright": "Alle rechten voorbehouden.",
+  "footer.cookiePolicy": "Cookie Policy",
+  "cookie.message": "We gebruiken cookies om uw ervaring te verbeteren.",
+  "cookie.accept": "Accepteren",
+  "cookie.decline": "Weigeren",
+  "lang.switch": "Taal wijzigen",
+  "cta.learnMore": "Lees meer",
+  "cta.contactUs": "Neem contact op"
+}

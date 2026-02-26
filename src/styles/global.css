@@ -1,0 +1,64 @@
+@import 'tailwindcss';
+
+/* SiteHub Brand Tokens */
+@theme {
+  --color-sitehub-dark: #133133;
+  --color-sitehub-darker: #112c2e;
+  --color-sitehub-accent: #ffd4a6;
+  --color-sitehub-accent-hover: #ffc280;
+  --color-sitehub-teal: #00918b;
+  --color-sitehub-teal-dark: #007a75;
+  --color-sitehub-teal-light: #00a9a2;
+  --color-sitehub-white: #ffffff;
+  --color-sitehub-gray: #f5f5f5;
+  --color-sitehub-text: #333333;
+  --color-sitehub-text-light: #ffffffcc;
+
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* Base styles */
+body {
+  @apply bg-sitehub-white text-sitehub-text font-sans antialiased;
+}
+
+/* Rich text content from MDX */
+.prose h1 {
+  @apply text-3xl md:text-4xl font-bold mb-6 text-sitehub-dark;
+}
+
+.prose h2 {
+  @apply text-2xl md:text-3xl font-bold mb-4 mt-10 text-sitehub-dark;
+}
+
+.prose h3 {
+  @apply text-xl md:text-2xl font-semibold mb-3 mt-8 text-sitehub-dark;
+}
+
+.prose h4 {
+  @apply text-lg font-semibold mb-2 mt-6 text-sitehub-dark;
+}
+
+.prose p {
+  @apply mb-4 leading-relaxed;
+}
+
+.prose ul {
+  @apply list-disc pl-6 mb-4 space-y-1;
+}
+
+.prose ol {
+  @apply list-decimal pl-6 mb-4 space-y-1;
+}
+
+.prose a {
+  @apply text-sitehub-teal underline hover:text-sitehub-teal-dark transition-colors;
+}
+
+.prose img {
+  @apply rounded-lg my-6 max-w-full;
+}
+
+.prose strong {
+  @apply font-semibold;
+}

@@ -1,0 +1,53 @@
+---
+import { t, type Lang } from '../i18n/index';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+---
+
+<div
+  id="cookie-banner"
+  class="fixed bottom-0 inset-x-0 z-50 hidden"
+  role="dialog"
+  aria-label="Cookie consent"
+>
+  <div class="bg-sitehub-dark/95 backdrop-blur-sm border-t border-white/10 p-4 md:p-6">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-white/80 text-sm">
+        {t(lang, 'cookie.message')}
+      </p>
+      <div class="flex gap-3">
+        <button
+          id="cookie-decline"
+          class="px-4 py-2 text-sm text-white/60 hover:text-white border border-white/20 rounded-md transition-colors"
+        >
+          {t(lang, 'cookie.decline')}
+        </button>
+        <button
+          id="cookie-accept"
+          class="px-4 py-2 text-sm bg-sitehub-accent text-sitehub-dark font-semibold rounded-md hover:bg-sitehub-accent-hover transition-colors"
+        >
+          {t(lang, 'cookie.accept')}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const banner = document.getElementById('cookie-banner');
+  if (!localStorage.getItem('cookie-consent')) {
+    banner?.classList.remove('hidden');
+  }
+  document.getElementById('cookie-accept')?.addEventListener('click', () => {
+    localStorage.setItem('cookie-consent', 'accepted');
+    banner?.classList.add('hidden');
+  });
+  document.getElementById('cookie-decline')?.addEventListener('click', () => {
+    localStorage.setItem('cookie-consent', 'declined');
+    banner?.classList.add('hidden');
+  });
+</script>
