@@ -15,7 +15,8 @@ Static corporate website for **SiteHub ApS** (Danish construction tech), migrate
 |-------|-----------|
 | Framework | Astro 5 (`output: 'static'`) |
 | Styling | Tailwind CSS 4 via `@tailwindcss/vite` |
-| Content | MDX files in Astro Content Collections |
+| Fonts | Self-hosted Montserrat (woff2, weights 100-900) |
+| Content | Template-per-page architecture + MDX fallback |
 | i18n | 5 languages — da (default), en, nn, sv, nl |
 | Deployment | GitHub Pages via GitHub Actions |
 | DNS | Hetzner Cloud API (`api.hetzner.cloud/v1`) |
@@ -36,22 +37,53 @@ pnpm extract      # Run WordPress extraction tool
 
 | Path | Purpose |
 |------|---------|
-| `src/content/pages/{da,en,nn,sv,nl}/` | MDX page content per language |
+| `src/templates/` | Page-specific layout templates (9 templates) |
+| `src/templates/index.ts` | Slug → template name routing map |
+| `src/content/data/` | TypeScript content data modules per page (9 files) |
+| `src/content/pages/{da,en,nn,sv,nl}/` | MDX page content (routing + SEO metadata) |
 | `src/content.config.ts` | Content collection schema (Zod validation) |
-| `src/components/` | Astro components (Header, Footer, Hero, etc.) |
-| `src/layouts/BaseLayout.astro` | Base page layout with SEO head |
+| `src/components/` | Shared Astro components (13 components) |
+| `src/components/PageRenderer.astro` | Template router with MDX prose fallback |
+| `src/layouts/BaseLayout.astro` | Base layout with SEO, hreflang, JSON-LD |
 | `src/pages/[...slug].astro` | Danish routes (no URL prefix) |
 | `src/pages/{en,nn,sv,nl}/[...slug].astro` | Locale-prefixed routes |
-| `src/i18n/` | UI string translations + helper functions |
-| `src/styles/global.css` | Tailwind + SiteHub brand tokens |
-| `src/assets/` | Images, logos, icons, banners |
+| `src/i18n/` | UI string translations (264 keys × 5 langs) |
+| `src/styles/global.css` | Tailwind theme + brand tokens + @font-face |
+| `src/assets/images/` | 92 original images from WordPress mirror |
+| `src/assets/icons/` | 19 SVG icons |
+| `src/assets/fonts/` | 10 Montserrat woff2 font files |
 | `tools/extract/` | WordPress REST API extraction tool |
 | `public/CNAME` | GitHub Pages custom domain |
 | `.github/workflows/deploy.yml` | CI/CD pipeline |
 
+## Template Architecture
+
+The site uses a **template-per-page** pattern. Each unique page design has its own Astro template component (`src/templates/*Template.astro`) that hardcodes the section layout matching the original WordPress/Elementor site. Content text is loaded from TypeScript data modules (`src/content/data/*.ts`), keyed by language.
+
+**Rendering flow:**
+1. `PageRenderer.astro` receives a page from the content collection
+2. `getTemplateName(slug, lang)` looks up the template in `src/templates/index.ts`
+3. If a template exists → renders the structured template component
+4. If no template → falls back to rendering MDX body as prose (cookie policy, news, etc.)
+
+**Templates:** Home, About, Tech, Service, Construction, Consultancy, Compliance, Projects, Contact
+
+**Shared components:** HeroSection, ContentSection, StatsBar, Button, IconList, FeatureIcon, TeamCard, ImageCard
+
+### Adding a new templated page:
+1. Create `src/content/data/{page}.ts` with content keyed by language
+2. Create `src/templates/{Page}Template.astro` importing the data module
+3. Add slug mappings for all 5 languages in `src/templates/index.ts`
+4. Import and register the template in `src/components/PageRenderer.astro`
+5. Create `src/content/pages/{lang}/{slug}.mdx` for routing and SEO metadata
+
+### Adding a simple (non-templated) page:
+1. Create `src/content/pages/{lang}/{slug}.mdx` for each language
+2. Write content directly in MDX body — rendered as prose with HeroSection
+
 ## Content & i18n
 
-Each page is an MDX file with this frontmatter schema:
+MDX files provide routing and SEO metadata. Each has this frontmatter:
 
 ```yaml
 title: "Om os"
@@ -75,11 +107,6 @@ wpId: 1113
 - Other locales: prefixed → `/en/about/`, `/nn/om-oss/`, `/sv/om-oss-sv/`, `/nl/over-ons/`
 - Homepage: `/` (da), `/en/` (en), `/nn/` (nn), etc.
 
-**Adding a new page:**
-1. Create `src/content/pages/{lang}/{slug}.mdx` for each language
-2. Include `translations` map in frontmatter linking all language versions
-3. Build verifies schema via Zod — missing required fields will fail the build
-
 **Content config** lives at `src/content.config.ts` (Astro 5 convention — NOT `src/content/config.ts`).
 
 ## Brand Tokens
@@ -90,8 +117,20 @@ Defined in `src/styles/global.css` via Tailwind `@theme`:
 |-------|-------|-------|
 | `--color-sitehub-dark` | `#133133` | Primary dark teal background |
 | `--color-sitehub-darker` | `#112c2e` | Deeper background variant |
-| `--color-sitehub-accent` | `#ffd4a6` | Orange accent (CTAs, highlights) |
+| `--color-sitehub-accent` | `#FFD4A6` | Orange accent (CTAs, highlights) |
+| `--color-sitehub-accent-light` | `#FFD4A61A` | Accent section background |
 | `--color-sitehub-teal` | `#00918B` | Brand teal |
+| `--color-sitehub-gray` | `#62717F` | Secondary text |
+| `--font-sans` | `Montserrat` | Self-hosted, weights 100-900 |
+| `--spacing-section` | `128px` | Section vertical padding |
+| `--radius-image` | `30px` | Image border radius |
+| `--radius-button` | `100px` | Pill button radius |
+
+**Typography:** H1: 96px→48px→30px (responsive clamp), H2: 64px→36px→26px, Body: 24px→20px→18px
+
+**Hero gradient:** `linear-gradient(120deg, #133133E6 28.23%, #13313300 79.89%)`
+
+**Key CSS classes:** `.btn` (pill CTA), `.btn-accent`, `.stat-card`, `.card-bordered`, `.image-rounded`
 
 ## Deployment
 
