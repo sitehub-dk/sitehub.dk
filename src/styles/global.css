@@ -1,64 +1,193 @@
 @import 'tailwindcss';
 
-/* SiteHub Brand Tokens */
+/* ─── Montserrat Self-Hosted Fonts ─── */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/src/assets/fonts/montserrat-jtusjig1_i6t8kchkm459wlhyw.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/src/assets/fonts/montserrat-jtusjig1_i6t8kchkm459wdhyzbi.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/src/assets/fonts/montserrat-jtuqjig1_i6t8kchkm459wxrys7m.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/src/assets/fonts/montserrat-jtuqjig1_i6t8kchkm459wxrxi7mw9c.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* ─── Design System Tokens ─── */
 @theme {
+  /* Colors */
   --color-sitehub-dark: #133133;
   --color-sitehub-darker: #112c2e;
-  --color-sitehub-accent: #ffd4a6;
-  --color-sitehub-accent-hover: #ffc280;
-  --color-sitehub-teal: #00918b;
+  --color-sitehub-teal: #00918B;
   --color-sitehub-teal-dark: #007a75;
-  --color-sitehub-teal-light: #00a9a2;
+  --color-sitehub-accent: #FFD4A6;
+  --color-sitehub-accent-hover: #ffc280;
+  --color-sitehub-accent-light: #FFD4A61A;
+  --color-sitehub-gray: #62717F;
   --color-sitehub-white: #ffffff;
-  --color-sitehub-gray: #f5f5f5;
-  --color-sitehub-text: #333333;
-  --color-sitehub-text-light: #ffffffcc;
+  --color-sitehub-white-muted: #FFFFFF99;
+  --color-sitehub-white-dim: #FFFFFF80;
+  --color-sitehub-bg: #f5f5f5;
 
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  /* Typography */
+  --font-sans: 'Montserrat', system-ui, -apple-system, sans-serif;
+
+  /* Spacing */
+  --spacing-section: 128px;
+  --spacing-section-tablet: 64px;
+  --spacing-section-mobile: 50px;
+  --spacing-hero: 160px;
+  --spacing-hero-tablet: 100px;
+  --spacing-hero-mobile: 80px;
+
+  /* Radii */
+  --radius-image: 30px;
+  --radius-card: 20px;
+  --radius-button: 100px;
+  --radius-input: 15px;
 }
 
-/* Base styles */
+/* ─── Base Styles ─── */
 body {
-  @apply bg-sitehub-white text-sitehub-text font-sans antialiased;
+  font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
+  color: #133133;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Rich text content from MDX */
-.prose h1 {
-  @apply text-3xl md:text-4xl font-bold mb-6 text-sitehub-dark;
+/* ─── Typography Scale ─── */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.2em;
+  font-weight: 600;
 }
 
-.prose h2 {
-  @apply text-2xl md:text-3xl font-bold mb-4 mt-10 text-sitehub-dark;
+/* ─── Button Component ─── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 32px;
+  border-radius: 100px;
+  border: 3px solid #133133;
+  background: white;
+  color: #133133;
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
 }
 
-.prose h3 {
-  @apply text-xl md:text-2xl font-semibold mb-3 mt-8 text-sitehub-dark;
+.btn:hover {
+  background: #133133;
+  color: white;
 }
 
-.prose h4 {
-  @apply text-lg font-semibold mb-2 mt-6 text-sitehub-dark;
+.btn-accent {
+  border-color: #FFD4A6;
+  color: #FFD4A6;
+  background: transparent;
 }
 
-.prose p {
-  @apply mb-4 leading-relaxed;
+.btn-accent:hover {
+  background: #FFD4A6;
+  color: #133133;
 }
 
-.prose ul {
-  @apply list-disc pl-6 mb-4 space-y-1;
+.btn-white {
+  border-color: white;
+  color: white;
+  background: transparent;
 }
 
-.prose ol {
-  @apply list-decimal pl-6 mb-4 space-y-1;
+.btn-white:hover {
+  background: white;
+  color: #133133;
 }
 
-.prose a {
-  @apply text-sitehub-teal underline hover:text-sitehub-teal-dark transition-colors;
+/* ─── Card Styles ─── */
+.card-bordered {
+  border: 3px solid #133133;
+  border-radius: 20px;
+  overflow: hidden;
 }
 
-.prose img {
-  @apply rounded-lg my-6 max-w-full;
+.image-rounded {
+  border-radius: 30px;
+  border: 3px solid #133133;
+  overflow: hidden;
 }
 
-.prose strong {
-  @apply font-semibold;
+/* ─── Stats Counter Card ─── */
+.stat-card {
+  flex: 1;
+  min-width: 200px;
+  background-color: var(--color-sitehub-accent-light, #FFD4A61A);
+  background-image: url('/src/assets/icons/icon-bg.svg');
+  background-position: bottom right;
+  background-repeat: no-repeat;
+  padding: 32px;
+  border: 3px solid #133133;
+  border-radius: 20px;
+}
+
+.stat-card .stat-number {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 40px;
+  font-weight: 900;
+  color: #FFD4A6;
+  line-height: 1.2;
+}
+
+.stat-card .stat-label {
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.2em;
+  text-align: center;
+  color: #133133;
+}
+
+/* ─── Section Divider ─── */
+.section-divider {
+  border-top: 2px solid #FFD4A6;
+  border-bottom: 2px solid #FFD4A6;
+  position: relative;
+  margin-bottom: 90px;
+}
+
+/* ─── Responsive Typography ─── */
+@media (max-width: 767px) {
+  .stat-card .stat-label {
+    font-size: 20px;
+  }
 }

@@ -1,0 +1,154 @@
+---
+import type { Lang } from '../i18n/index';
+import { aboutContent } from '../content/data/about';
+import HeroSection from '../components/HeroSection.astro';
+import ContentSection from '../components/ContentSection.astro';
+import Button from '../components/Button.astro';
+import TeamCard from '../components/TeamCard.astro';
+
+// Images
+import heroBg from '../assets/images/mxnpo4_I.png';
+import andreImg from '../assets/images/andre.jpg';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const c = aboutContent[lang];
+---
+
+<!-- 1. Hero Section -->
+<HeroSection
+  title={c.hero.title}
+  subtitle={c.hero.subtitle}
+  bgImage={heroBg}
+/>
+
+<!-- 2. Intro Section -->
+<section class="max-w-[1528px] mx-auto" style="padding: 128px 20px;">
+  <div class="flex flex-col gap-8" style="max-width: 900px;">
+    <h2 class="font-semibold text-sitehub-dark" style="font-size: clamp(26px, 4vw, 64px); line-height: 1.2em;">
+      {c.intro.title}
+    </h2>
+    <p style="font-size: clamp(18px, 1.5vw, 24px); line-height: 1.5;">
+      {c.intro.text1}
+    </p>
+    <p style="font-size: clamp(18px, 1.5vw, 24px); line-height: 1.5;">
+      {c.intro.text2}
+    </p>
+    <p style="font-size: clamp(18px, 1.5vw, 24px); line-height: 1.5;">
+      {c.intro.text3}
+    </p>
+    <p style="font-size: clamp(18px, 1.5vw, 24px); line-height: 1.5;">
+      {c.intro.text4}
+    </p>
+  </div>
+</section>
+
+<!-- 3. SiteHub Services Link -->
+<section class="max-w-[1528px] mx-auto" style="padding: 0 20px 128px;">
+  <div class="flex flex-col gap-6">
+    <h2 class="font-semibold text-sitehub-dark" style="font-size: clamp(26px, 4vw, 48px); line-height: 1.2em;">
+      {c.services.title}
+    </h2>
+    <p style="font-size: clamp(18px, 1.5vw, 24px); line-height: 1.5;">
+      {c.services.text}
+    </p>
+    <div>
+      <Button href={c.services.ctaHref}>{c.services.cta}</Button>
+    </div>
+  </div>
+</section>
+
+<!-- 4. Team Section -->
+<section style="background-color: #FFD4A61A; padding: 128px 20px;">
+  <div class="max-w-[1528px] mx-auto flex flex-col gap-12">
+    <h2 class="font-semibold text-sitehub-dark" style="font-size: clamp(26px, 4vw, 64px); line-height: 1.2em;">
+      {c.team.title}
+    </h2>
+    <h3 class="font-semibold text-sitehub-dark" style="font-size: clamp(20px, 2vw, 32px); line-height: 1.3;">
+      {c.team.subtitle}
+    </h3>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
+      {c.team.members.map((member) => (
+        <TeamCard
+          image={member.name === 'Andre Sode' ? andreImg : heroBg}
+          name={member.name}
+          title={member.role}
+        />
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- 5. Ambition, Mission & DNA -->
+<section class="max-w-[1528px] mx-auto" style="padding: 128px 20px;">
+  <div class="flex flex-col gap-16">
+    <h2 class="font-semibold text-sitehub-dark" style="font-size: clamp(26px, 4vw, 64px); line-height: 1.2em;">
+      {c.ambition.title}
+    </h2>
+
+    <!-- Ambition -->
+    <div class="flex flex-col gap-6">
+      <h3 class="font-semibold text-sitehub-dark" style="font-size: clamp(20px, 2vw, 32px); line-height: 1.3;">
+        {c.ambition.ambitionTitle}
+      </h3>
+      <p style="font-size: clamp(18px, 1.5vw, 24px); line-height: 1.5;">
+        {c.ambition.ambitionText1}
+      </p>
+      <p style="font-size: clamp(18px, 1.5vw, 24px); line-height: 1.5;">
+        {c.ambition.ambitionText2}
+      </p>
+      <p style="font-size: clamp(18px, 1.5vw, 24px); line-height: 1.5;">
+        {c.ambition.ambitionText3}
+      </p>
+    </div>
+
+    <!-- Mission -->
+    <div class="flex flex-col gap-6">
+      <h3 class="font-semibold text-sitehub-dark" style="font-size: clamp(20px, 2vw, 32px); line-height: 1.3;">
+        {c.ambition.missionTitle}
+      </h3>
+      <p style="font-size: clamp(18px, 1.5vw, 24px); line-height: 1.5;">
+        {c.ambition.missionText1}
+      </p>
+      <p style="font-size: clamp(18px, 1.5vw, 24px); line-height: 1.5;">
+        {c.ambition.missionText2}
+      </p>
+      <p style="font-size: clamp(18px, 1.5vw, 24px); line-height: 1.5;">
+        {c.ambition.missionText3}
+      </p>
+    </div>
+
+    <!-- DNA -->
+    <div class="flex flex-col gap-6">
+      <h3 class="font-semibold text-sitehub-dark" style="font-size: clamp(20px, 2vw, 32px); line-height: 1.3;">
+        {c.ambition.dnaTitle}
+      </h3>
+      <div class="flex flex-wrap gap-6">
+        {c.ambition.dnaItems.map((item) => (
+          <div class="flex items-center gap-3 px-6 py-4 rounded-2xl" style="background-color: #FFD4A61A;">
+            <span class="font-semibold text-sitehub-dark" style="font-size: 20px;">{item}</span>
+          </div>
+        ))}
+      </div>
+      <p style="font-size: clamp(18px, 1.5vw, 24px); line-height: 1.5;">
+        {c.ambition.dnaText}
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  @media (max-width: 1024px) {
+    section {
+      padding: 64px 20px !important;
+    }
+  }
+  @media (max-width: 767px) {
+    section {
+      padding: 50px 20px !important;
+    }
+  }
+</style>

@@ -1,0 +1,178 @@
+---
+import type { Lang } from '../i18n/index';
+import { contactContent } from '../content/data/contact';
+import HeroSection from '../components/HeroSection.astro';
+
+// Images
+import heroBg from '../assets/images/1XtiPiIY.jpeg';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const c = contactContent[lang];
+---
+
+<!-- 1. Hero Section -->
+<HeroSection
+  title={c.hero.title}
+  subtitle={c.hero.subtitle}
+  bgImage={heroBg}
+/>
+
+<!-- 2. Main Contact Info -->
+<section class="max-w-[1528px] mx-auto" style="padding: 128px 20px;">
+  <div class="flex flex-col lg:flex-row gap-16">
+    <!-- Left: Phone & Email -->
+    <div class="flex-1 flex flex-col gap-12">
+      <!-- Main Phone -->
+      <div class="flex flex-col gap-3">
+        <h2 class="font-semibold text-sitehub-dark" style="font-size: clamp(20px, 2vw, 28px); line-height: 1.3;">
+          {c.mainPhone.label}:
+        </h2>
+        <a
+          href={`tel:${c.mainPhone.value.replace(/\s/g, '')}`}
+          class="font-semibold text-sitehub-teal hover:underline"
+          style="font-size: clamp(26px, 4vw, 48px); line-height: 1.2;"
+        >
+          {c.mainPhone.value}
+        </a>
+      </div>
+
+      <!-- Main Email -->
+      <div class="flex flex-col gap-3">
+        <h2 class="font-semibold text-sitehub-dark" style="font-size: clamp(20px, 2vw, 28px); line-height: 1.3;">
+          {c.mainEmail.label}:
+        </h2>
+        <a
+          href={`mailto:${c.mainEmail.value}`}
+          class="font-semibold text-sitehub-teal hover:underline"
+          style="font-size: clamp(26px, 4vw, 48px); line-height: 1.2;"
+        >
+          {c.mainEmail.value}
+        </a>
+      </div>
+
+      <!-- Department Numbers -->
+      <div class="flex flex-col gap-4 mt-4">
+        {c.phones.map((phone) => (
+          <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4">
+            <span class="font-semibold text-sitehub-dark" style="font-size: 18px; min-width: 200px;">
+              {phone.label}:
+            </span>
+            <a
+              href={`tel:${phone.value.replace(/\s/g, '')}`}
+              class="text-sitehub-teal hover:underline"
+              style="font-size: 18px; font-weight: 600;"
+            >
+              {phone.value}
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Right: Contact Form -->
+    <div class="flex-1">
+      <div class="card-bordered p-8 flex flex-col gap-6">
+        <h2 class="font-semibold text-sitehub-dark" style="font-size: clamp(26px, 3vw, 40px); line-height: 1.2em;">
+          {c.form.title}
+        </h2>
+        <h3 class="font-semibold text-sitehub-dark" style="font-size: 20px; line-height: 1.3;">
+          {c.form.subtitle}
+        </h3>
+        <p style="font-size: 16px; line-height: 1.5;">
+          {c.form.description}
+        </p>
+        <form class="flex flex-col gap-4" action="#" method="POST">
+          <div class="flex flex-col sm:flex-row gap-4">
+            <div class="flex-1 flex flex-col gap-2">
+              <label for="firstName" class="font-semibold text-sitehub-dark" style="font-size: 14px;">
+                {c.form.firstName}
+              </label>
+              <input
+                type="text"
+                id="firstName"
+                name="firstName"
+                required
+                class="contact-input"
+              />
+            </div>
+            <div class="flex-1 flex flex-col gap-2">
+              <label for="lastName" class="font-semibold text-sitehub-dark" style="font-size: 14px;">
+                {c.form.lastName}
+              </label>
+              <input
+                type="text"
+                id="lastName"
+                name="lastName"
+                required
+                class="contact-input"
+              />
+            </div>
+          </div>
+          <div class="flex flex-col gap-2">
+            <label for="email" class="font-semibold text-sitehub-dark" style="font-size: 14px;">
+              {c.form.email}
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              class="contact-input"
+            />
+          </div>
+          <div class="flex flex-col gap-2">
+            <label for="message" class="font-semibold text-sitehub-dark" style="font-size: 14px;">
+              {c.form.message}
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              rows="5"
+              required
+              class="contact-input"
+              style="resize: vertical;"
+            ></textarea>
+          </div>
+          <button type="submit" class="btn self-start">
+            {c.form.submit}
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-input {
+    padding: 12px 16px;
+    border: 1px solid #133133;
+    border-radius: 12px;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #133133;
+    background: white;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .contact-input:focus {
+    border-color: #00918B;
+    box-shadow: 0 0 0 2px rgba(0, 145, 139, 0.15);
+  }
+  @media (max-width: 1024px) {
+    section {
+      padding: 64px 20px !important;
+    }
+  }
+  @media (max-width: 767px) {
+    section {
+      padding: 50px 20px !important;
+    }
+  }
+</style>

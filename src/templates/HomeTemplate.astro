@@ -1,0 +1,121 @@
+---
+import type { Lang } from '../i18n/index';
+import { homeContent } from '../content/data/home';
+import HeroSection from '../components/HeroSection.astro';
+import StatsBar from '../components/StatsBar.astro';
+import ContentSection from '../components/ContentSection.astro';
+import Button from '../components/Button.astro';
+import IconList from '../components/IconList.astro';
+
+// Images
+import heroBg from '../assets/images/DMNCoX1Y.jpeg';
+import techImg from '../assets/images/N9f_eESA.jpeg';
+import constructionImg from '../assets/images/IV95w74I.jpeg';
+import consultancyImg from '../assets/images/3LIkewDE.jpeg';
+import serviceImg1 from '../assets/images/a_uqhZ4o.jpeg';
+import serviceImg2 from '../assets/images/tAdeb-0U.jpeg';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const c = homeContent[lang];
+---
+
+<!-- 1. Hero Section -->
+<HeroSection
+  title={c.hero.title}
+  subtitles={c.hero.subtitles}
+  bgImage={heroBg}
+/>
+
+<!-- 2. Stats Bar -->
+<StatsBar heading={c.stats.heading} stats={c.stats.items} />
+
+<!-- 3. Mission Statement -->
+<section class="max-w-[1528px] mx-auto px-5" style="padding-top: 0; padding-bottom: 64px;">
+  <h2 class="font-semibold text-sitehub-dark text-center" style="font-size: clamp(26px, 4vw, 48px); line-height: 1.2em; max-width: 900px; margin: 0 auto;">
+    {c.mission}
+  </h2>
+</section>
+
+<!-- 4. Service Section (image left, text right) — light accent bg -->
+<ContentSection image={techImg} imageAlt={c.service.title} bgColor="#FFD4A61A">
+  <h2>{c.service.title}</h2>
+  <p>{c.service.text}</p>
+  <div>
+    <Button href={c.service.ctaHref}>{c.service.cta}</Button>
+  </div>
+</ContentSection>
+
+<!-- 5. Technology Section (text left, image right) -->
+<ContentSection reverse image={constructionImg} imageAlt={c.tech.title}>
+  <h2>{c.tech.title}</h2>
+  <p>{c.tech.text}</p>
+  <div>
+    <Button href={c.tech.ctaHref}>{c.tech.cta}</Button>
+  </div>
+</ContentSection>
+
+<!-- 6. Better Construction Site Section — overflow image, accent bg -->
+<ContentSection image={consultancyImg} imageAlt={c.construction.title} bgColor="#FFD4A61A" overflowImage>
+  <h2>{c.construction.title}</h2>
+  <p>{c.construction.text1}</p>
+  <p>{c.construction.text2}</p>
+  <div>
+    <Button href={c.construction.ctaHref}>{c.construction.cta}</Button>
+  </div>
+</ContentSection>
+
+<!-- 7. Consultancy Section -->
+<section class="max-w-[1528px] mx-auto" style="padding: 151px 20px 128px;">
+  <div class="flex flex-col gap-16">
+    <div class="flex flex-col lg:flex-row justify-between gap-16">
+      <div class="flex-1">
+        <h2 class="font-semibold text-sitehub-dark" style="font-size: clamp(26px, 4vw, 64px); line-height: 1.2em;">
+          {c.consultancy.title}
+        </h2>
+      </div>
+      <div class="flex-1" style="max-width: 878px;">
+        <p style="font-size: clamp(18px, 1.5vw, 24px); line-height: 1.5;">
+          {c.consultancy.text}
+        </p>
+      </div>
+    </div>
+    <div>
+      <h4 class="font-semibold mb-4" style="font-size: 20px;">{c.consultancy.subheading}</h4>
+      <IconList items={c.consultancy.items} />
+    </div>
+    <div>
+      <Button href={c.consultancy.ctaHref}>{c.consultancy.cta}</Button>
+    </div>
+  </div>
+</section>
+
+<!-- 8. Jobs Section — accent bg -->
+<ContentSection
+  reverse
+  bgColor="#FFD4A61A"
+  image={serviceImg1}
+  imageAlt={c.jobs.title}
+>
+  <h2>{c.jobs.title}</h2>
+  <p>{c.jobs.text}</p>
+  <div>
+    <Button href={c.jobs.ctaHref}>{c.jobs.cta}</Button>
+  </div>
+</ContentSection>
+
+<style>
+  @media (max-width: 1024px) {
+    section {
+      padding: 64px 20px !important;
+    }
+  }
+  @media (max-width: 767px) {
+    section {
+      padding: 50px 20px !important;
+    }
+  }
+</style>

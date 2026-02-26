@@ -14,21 +14,21 @@ const { lang } = Astro.props;
   role="dialog"
   aria-label="Cookie consent"
 >
-  <div class="bg-sitehub-dark/95 backdrop-blur-sm border-t border-white/10 p-4 md:p-6">
-    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-      <p class="text-white/80 text-sm">
+  <div style="background: rgba(19, 49, 51, 0.9); padding: 20px 30px;">
+    <div class="max-w-[1528px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-white text-sm" style="line-height: 1.5; max-width: 700px;">
         {t(lang, 'cookie.message')}
       </p>
-      <div class="flex gap-3">
+      <div class="flex gap-3 flex-shrink-0">
         <button
           id="cookie-decline"
-          class="px-4 py-2 text-sm text-white/60 hover:text-white border border-white/20 rounded-md transition-colors"
+          class="cookie-btn cookie-btn-secondary"
         >
           {t(lang, 'cookie.decline')}
         </button>
         <button
           id="cookie-accept"
-          class="px-4 py-2 text-sm bg-sitehub-accent text-sitehub-dark font-semibold rounded-md hover:bg-sitehub-accent-hover transition-colors"
+          class="cookie-btn cookie-btn-primary"
         >
           {t(lang, 'cookie.accept')}
         </button>
@@ -36,6 +36,33 @@ const { lang } = Astro.props;
     </div>
   </div>
 </div>
+
+<style>
+  .cookie-btn {
+    padding: 10px 24px;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    white-space: nowrap;
+  }
+  .cookie-btn-primary {
+    background: #FFD4A6;
+    color: #133133;
+  }
+  .cookie-btn-primary:hover {
+    background: #ccaa85;
+  }
+  .cookie-btn-secondary {
+    background: transparent;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+  .cookie-btn-secondary:hover {
+    border-color: white;
+  }
+</style>
 
 <script>
   const banner = document.getElementById('cookie-banner');

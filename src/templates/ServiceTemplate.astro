@@ -1,0 +1,120 @@
+---
+import type { Lang } from '../i18n/index';
+import { serviceContent } from '../content/data/service';
+import HeroSection from '../components/HeroSection.astro';
+import ContentSection from '../components/ContentSection.astro';
+import Button from '../components/Button.astro';
+import IconList from '../components/IconList.astro';
+
+// Images
+import heroBg from '../assets/images/bKOqK9lM.jpeg';
+import serviceImg1 from '../assets/images/services-DA-1.png';
+import serviceImg2 from '../assets/images/a_uqhZ4o.jpeg';
+import serviceImg3 from '../assets/images/tAdeb-0U.jpeg';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const c = serviceContent[lang];
+---
+
+<!-- 1. Hero Section -->
+<HeroSection
+  title={c.hero.title}
+  subtitle={c.hero.subtitle}
+  bgImage={heroBg}
+/>
+
+<!-- 2. Intro Section with stat -->
+<section class="max-w-[1528px] mx-auto" style="padding: 128px 20px;">
+  <div class="flex flex-col gap-8" style="max-width: 900px;">
+    <p class="font-semibold" style="font-size: clamp(18px, 1.5vw, 24px); line-height: 1.5;">
+      {c.intro.text1}
+    </p>
+    <p style="font-size: clamp(18px, 1.5vw, 24px); line-height: 1.5;">
+      {c.intro.text2}
+    </p>
+    <p style="font-size: clamp(18px, 1.5vw, 24px); line-height: 1.5;">
+      {c.intro.text3}
+    </p>
+  </div>
+  <div class="mt-16 flex items-center gap-8 p-8 rounded-2xl" style="background-color: #FFD4A61A;">
+    <div class="stat-number" style="font-size: clamp(48px, 6vw, 96px); font-weight: 700; color: #133133; line-height: 1;">
+      {c.intro.stat.value}
+    </div>
+    <div style="font-size: clamp(18px, 1.5vw, 24px); line-height: 1.5; color: #133133;">
+      {c.intro.stat.label}
+    </div>
+  </div>
+</section>
+
+<!-- 3. Logistics Section -->
+<ContentSection image={serviceImg1} imageAlt={c.logistics.title} bgColor="#FFD4A61A">
+  <h2>{c.logistics.title}</h2>
+  <p>{c.logistics.text1}</p>
+  <p>{c.logistics.text2}</p>
+  <p>{c.logistics.text3}</p>
+  <div>
+    <Button href={c.logistics.ctaHref}>{c.logistics.cta}</Button>
+  </div>
+</ContentSection>
+
+<!-- 4. Warehouse Section -->
+<ContentSection reverse image={serviceImg2} imageAlt={c.warehouse.title}>
+  <h2>{c.warehouse.title}</h2>
+  <p>{c.warehouse.text}</p>
+</ContentSection>
+
+<!-- 5. Site Operations Section -->
+<section style="background-color: #FFD4A61A; padding: 128px 20px;">
+  <div class="max-w-[1528px] mx-auto flex flex-col gap-8">
+    <h2 class="font-semibold text-sitehub-dark" style="font-size: clamp(26px, 4vw, 64px); line-height: 1.2em;">
+      {c.siteOps.title}
+    </h2>
+    <p style="font-size: clamp(18px, 1.5vw, 24px); line-height: 1.5;">
+      {c.siteOps.text}
+    </p>
+    <IconList items={c.siteOps.items} />
+    <div>
+      <Button href={c.siteOps.ctaHref}>{c.siteOps.cta}</Button>
+    </div>
+  </div>
+</section>
+
+<!-- 6. Qualified Site Workers -->
+<section class="max-w-[1528px] mx-auto" style="padding: 128px 20px;">
+  <div class="flex flex-col lg:flex-row gap-16">
+    <div class="flex-1 flex flex-col gap-8">
+      <h2 class="font-semibold text-sitehub-dark" style="font-size: clamp(26px, 4vw, 64px); line-height: 1.2em;">
+        {c.siteWorkers.title}
+      </h2>
+      <p style="font-size: clamp(18px, 1.5vw, 24px); line-height: 1.5;">
+        {c.siteWorkers.text}
+      </p>
+    </div>
+    <div class="flex-1">
+      <IconList items={c.siteWorkers.items} />
+    </div>
+  </div>
+</section>
+
+<!-- 7. Waste & Recycling Section -->
+<ContentSection image={serviceImg3} imageAlt={c.wasteRecycling.title} bgColor="#FFD4A61A">
+  <h2>{c.wasteRecycling.title}</h2>
+  <p>{c.wasteRecycling.text}</p>
+</ContentSection>
+
+<style>
+  @media (max-width: 1024px) {
+    section {
+      padding: 64px 20px !important;
+    }
+  }
+  @media (max-width: 767px) {
+    section {
+      padding: 50px 20px !important;
+    }
+  }
+</style>

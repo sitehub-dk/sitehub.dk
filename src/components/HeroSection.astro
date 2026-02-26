@@ -1,0 +1,84 @@
+---
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  title: string;
+  subtitle?: string;
+  subtitles?: string[];
+  ctaText?: string;
+  ctaHref?: string;
+  bgImage?: ImageMetadata;
+  minHeight?: string;
+  gradientAngle?: string;
+}
+
+const {
+  title,
+  subtitle,
+  subtitles = [],
+  ctaText,
+  ctaHref,
+  bgImage,
+  minHeight = '1020px',
+  gradientAngle = '120deg',
+} = Astro.props;
+---
+
+<section
+  class="relative flex items-center overflow-hidden"
+  style={`min-height: ${minHeight}; padding: 160px 20px;`}
+>
+  {bgImage && (
+    <div
+      class="absolute inset-0 bg-cover bg-no-repeat"
+      style={`background-image: url(${bgImage.src}); background-position: center left;`}
+    />
+  )}
+  <div
+    class="absolute inset-0"
+    style={`background: linear-gradient(${gradientAngle}, #133133E6 28.23%, #13313300 79.89%);`}
+  />
+  <div class="relative z-10 max-w-[1528px] mx-auto w-full">
+    <h1
+      class="text-white font-semibold uppercase"
+      style="font-size: clamp(30px, 5vw, 96px); line-height: 1.2em; max-width: 800px;"
+    >
+      {title}
+    </h1>
+    {subtitle && (
+      <p class="text-sitehub-white-muted mt-6" style="font-size: clamp(22px, 3vw, 48px); line-height: 1.2em;">
+        {subtitle}
+      </p>
+    )}
+    {subtitles.length > 0 && (
+      <ul class="mt-6 space-y-1">
+        {subtitles.map((s) => (
+          <li class="text-sitehub-white-muted" style="font-size: clamp(22px, 3vw, 48px); line-height: 1.2em;">
+            {s}
+          </li>
+        ))}
+      </ul>
+    )}
+    {ctaText && ctaHref && (
+      <div class="mt-10">
+        <a href={ctaHref} class="btn btn-white">{ctaText}</a>
+      </div>
+    )}
+    <slot />
+  </div>
+</section>
+
+<style>
+  @media (max-width: 1024px) {
+    section {
+      min-height: 500px !important;
+      padding: 100px 20px !important;
+    }
+  }
+  @media (max-width: 767px) {
+    section {
+      min-height: 400px !important;
+      padding: 80px 20px !important;
+    }
+  }
+</style>

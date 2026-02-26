@@ -1,0 +1,9 @@
+<svg width="59" height="67" viewBox="0 0 59 67" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g opacity="0.2">
+<circle cx="53" cy="13" r="10.5" stroke="#FFD4A6" stroke-width="5"/>
+<circle cx="13" cy="13" r="10.5" transform="matrix(1 0 0 -1 40 82)" stroke="#FFD4A6" stroke-width="5"/>
+<circle cx="13" cy="40" r="10.5" stroke="#FFD4A6" stroke-width="5"/>
+<path d="M44 19L23 34.5" stroke="#FFD4A6" stroke-width="5"/>
+<path d="M43 61.5L22 46" stroke="#FFD4A6" stroke-width="5"/>
+</g>
+</svg>

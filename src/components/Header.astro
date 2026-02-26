@@ -1,6 +1,7 @@
 ---
 import LanguageSwitcher from './LanguageSwitcher.astro';
 import { t, langPath, type Lang } from '../i18n/index';
+import logoSvg from '../assets/logo.svg';
 
 interface Props {
   lang: Lang;
@@ -16,75 +17,112 @@ const navItems = [
   { key: 'nav.betterSite', slugs: { da: 'bedre-byggeplads', en: 'better-construction-site', nn: 'bedre-byggeplass', sv: 'battre-byggplats', nl: 'better-construction-site-nl' } },
   { key: 'nav.consultancy', slugs: { da: 'raadgivning', en: 'consultancy', nn: 'radgivning', sv: 'radgivning-sv', nl: 'advies' } },
   { key: 'nav.services', slugs: { da: 'service', en: 'services', nn: 'service-nn', sv: 'service-sv', nl: 'service-nl' } },
+  { key: 'nav.storage', slugs: { da: 'lagerservice', en: 'lagerservice', nn: 'lagerservice', sv: 'lagerservice', nl: 'lagerservice' } },
   { key: 'nav.compliance', slugs: { da: 'data-og-compliance', en: 'compliance', nn: 'compliance-nn', sv: 'compliance-sv', nl: 'compliance-nl' } },
   { key: 'nav.technology', slugs: { da: 'teknologi', en: 'technology', nn: 'teknologi-nn', sv: 'teknologi-sv', nl: 'technologie' } },
   { key: 'nav.projects', slugs: { da: 'projekter', en: 'projects', nn: 'prosjekter', sv: 'projekt', nl: 'projecten' } },
+  { key: 'nav.jobs', slugs: { da: 'jobs', en: 'jobs', nn: 'jobs', sv: 'jobs', nl: 'jobs' } },
   { key: 'nav.contact', slugs: { da: 'kontakt', en: 'contact', nn: 'kontakt-oss', sv: 'kontakta-oss', nl: 'contact-ons' } },
 ];
 ---
 
-<header class="sticky top-0 z-50 bg-sitehub-dark shadow-lg">
-  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-16">
-      <!-- Logo -->
-      <a href={`${prefix}/`} class="flex-shrink-0">
-        <span class="text-sitehub-accent font-bold text-xl tracking-tight">SiteHub</span>
-      </a>
+<header class="sticky top-0 z-50 bg-sitehub-dark" id="site-header">
+  <div class="max-w-[1528px] mx-auto px-5 flex items-center justify-between" style="min-height: 80px; gap: 100px;">
+    <!-- Logo -->
+    <a href={`${prefix}/`} class="flex-shrink-0" style="width: 189px;">
+      <img src={logoSvg.src} alt="SiteHub" width="189" height="50" style="height: 50px; object-fit: contain;" />
+    </a>
 
-      <!-- Desktop nav -->
-      <div class="hidden lg:flex items-center gap-1">
-        {navItems.map((item) => {
-          const itemSlug = item.slugs[lang] ?? item.slugs.da;
-          return (
-            <a
-              href={`${prefix}/${itemSlug}/`}
-              class="px-3 py-2 text-sm text-white/80 hover:text-sitehub-accent transition-colors rounded-md"
-            >
-              {t(lang, item.key)}
-            </a>
-          );
-        })}
-        <LanguageSwitcher lang={lang} slug={slug} translations={translations} />
-      </div>
-
-      <!-- Mobile hamburger -->
-      <button
-        id="mobile-menu-btn"
-        class="lg:hidden text-white p-2"
-        aria-label="Toggle menu"
-        aria-expanded="false"
-      >
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
-    </div>
-
-    <!-- Mobile nav -->
-    <div id="mobile-menu" class="hidden lg:hidden pb-4">
+    <!-- Desktop nav -->
+    <nav class="hidden lg:flex items-center flex-1 justify-end" style="gap: 30px;">
       {navItems.map((item) => {
         const itemSlug = item.slugs[lang] ?? item.slugs.da;
         return (
           <a
             href={`${prefix}/${itemSlug}/`}
-            class="block px-3 py-2 text-white/80 hover:text-sitehub-accent transition-colors"
+            class="nav-link text-sitehub-accent-light-link whitespace-nowrap"
+            style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 400; line-height: 1.2em; padding: 5px 0; text-decoration: none; transition: color 0.3s;"
           >
             {t(lang, item.key)}
           </a>
         );
       })}
-      <div class="px-3 pt-2 border-t border-white/10 mt-2">
-        <LanguageSwitcher lang={lang} slug={slug} translations={translations} />
-      </div>
+      <LanguageSwitcher lang={lang} slug={slug} translations={translations} />
+    </nav>
+
+    <!-- Mobile hamburger -->
+    <button
+      id="mobile-menu-btn"
+      class="lg:hidden text-sitehub-accent p-2"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+    >
+      <svg width="30" height="30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile nav dropdown -->
+  <div id="mobile-menu" class="hidden lg:hidden bg-sitehub-dark" style="margin-top: 20px;">
+    {navItems.map((item) => {
+      const itemSlug = item.slugs[lang] ?? item.slugs.da;
+      return (
+        <a
+          href={`${prefix}/${itemSlug}/`}
+          class="block text-white/80 hover:text-sitehub-accent transition-colors"
+          style="padding: 14px 20px; font-size: 16px;"
+        >
+          {t(lang, item.key)}
+        </a>
+      );
+    })}
+    <div class="px-5 pt-4 pb-4 border-t border-white/10 mt-2">
+      <LanguageSwitcher lang={lang} slug={slug} translations={translations} />
     </div>
-  </nav>
+  </div>
 </header>
+
+<style>
+  .nav-link {
+    color: rgba(255, 255, 255, 0.8);
+    position: relative;
+  }
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #324A6D;
+    transition: width 0.3s ease;
+  }
+  .nav-link:hover {
+    color: #FFD4A6;
+  }
+  .nav-link:hover::after {
+    width: 100%;
+  }
+  @media (max-width: 1024px) {
+    #site-header > div:first-child {
+      min-height: 80px !important;
+      gap: 0 !important;
+    }
+  }
+  @media (max-width: 767px) {
+    #site-header > div:first-child {
+      min-height: 65px !important;
+      justify-content: space-between !important;
+    }
+  }
+</style>
 
 <script>
   const btn = document.getElementById('mobile-menu-btn');
   const menu = document.getElementById('mobile-menu');
   btn?.addEventListener('click', () => {
     const open = menu?.classList.toggle('hidden') === false;
-    btn.setAttribute('aria-expanded', String(open));
+    btn?.setAttribute('aria-expanded', String(open));
   });
 </script>

@@ -1,11 +1,24 @@
 ---
 /**
- * Shared page rendering component. Used by all locale route files.
- * Renders MDX content with BaseLayout, hero section, and prose styling.
+ * Page rendering component that maps slugs to templates.
+ * Uses structured templates for known pages, falls back to prose MDX for others.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { render } from 'astro:content';
 import type { Lang } from '../i18n/index';
+import { getTemplateName } from '../templates/index';
+import HeroSection from './HeroSection.astro';
+
+// Template imports
+import HomeTemplate from '../templates/HomeTemplate.astro';
+import AboutTemplate from '../templates/AboutTemplate.astro';
+import TechTemplate from '../templates/TechTemplate.astro';
+import ServiceTemplate from '../templates/ServiceTemplate.astro';
+import ConstructionTemplate from '../templates/ConstructionTemplate.astro';
+import ConsultancyTemplate from '../templates/ConsultancyTemplate.astro';
+import ComplianceTemplate from '../templates/ComplianceTemplate.astro';
+import ProjectsTemplate from '../templates/ProjectsTemplate.astro';
+import ContactTemplate from '../templates/ContactTemplate.astro';
 
 interface Props {
   page: any;
@@ -13,8 +26,25 @@ interface Props {
 }
 
 const { page, lang } = Astro.props;
-const { Content } = await render(page);
 const seo = page.data.seo ?? { title: page.data.title, description: page.data.description };
+const templateName = getTemplateName(page.data.slug, lang);
+
+const templateComponents: Record<string, any> = {
+  home: HomeTemplate,
+  about: AboutTemplate,
+  tech: TechTemplate,
+  service: ServiceTemplate,
+  construction: ConstructionTemplate,
+  consultancy: ConsultancyTemplate,
+  compliance: ComplianceTemplate,
+  projects: ProjectsTemplate,
+  contact: ContactTemplate,
+};
+
+const TemplateComponent = templateName ? templateComponents[templateName] : null;
+
+// For fallback pages, render MDX content
+const { Content } = !TemplateComponent ? await render(page) : { Content: null };
 ---
 
 <BaseLayout
@@ -26,17 +56,56 @@ const seo = page.data.seo ?? { title: page.data.title, description: page.data.de
   slug={page.data.slug}
   translations={page.data.translations}
 >
-  <article>
-    <section class="bg-sitehub-dark text-white py-16 md:py-24">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 class="text-3xl md:text-5xl font-bold">{page.data.title}</h1>
-        {page.data.description && (
-          <p class="mt-4 text-lg text-white/80 max-w-2xl">{page.data.description}</p>
-        )}
+  {TemplateComponent ? (
+    <TemplateComponent lang={lang} />
+  ) : (
+    <article>
+      <HeroSection title={page.data.title} minHeight="400px" />
+      <div class="max-w-[1528px] mx-auto px-5" style="padding: 128px 20px;">
+        <div class="prose-fallback" style="max-width: 800px; margin: 0 auto;">
+          {Content && <Content />}
+        </div>
       </div>
-    </section>
-    <div class="prose max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <Content />
-    </div>
-  </article>
+    </article>
+  )}
 </BaseLayout>
+
+<style>
+  .prose-fallback :global(h2) {
+    font-size: clamp(26px, 4vw, 48px);
+    font-weight: 600;
+    line-height: 1.2em;
+    color: #133133;
+    margin-top: 48px;
+    margin-bottom: 16px;
+  }
+  .prose-fallback :global(h3) {
+    font-size: clamp(20px, 2vw, 32px);
+    font-weight: 600;
+    line-height: 1.3;
+    color: #133133;
+    margin-top: 32px;
+    margin-bottom: 12px;
+  }
+  .prose-fallback :global(p) {
+    font-size: clamp(18px, 1.5vw, 24px);
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+  .prose-fallback :global(ul), .prose-fallback :global(ol) {
+    padding-left: 24px;
+    margin-bottom: 16px;
+  }
+  .prose-fallback :global(li) {
+    font-size: clamp(18px, 1.5vw, 24px);
+    line-height: 1.5;
+    margin-bottom: 8px;
+  }
+  .prose-fallback :global(a) {
+    color: #00918B;
+    text-decoration: underline;
+  }
+  .prose-fallback :global(strong) {
+    font-weight: 600;
+  }
+</style>

@@ -1,0 +1,300 @@
+export const homeContent = {
+  da: {
+    hero: {
+      title: 'SiteHub leverer byggepladslogistik, -drift og data',
+      subtitles: [
+        'der øger sikkerheden',
+        'reducerer time-to-market',
+        'understøtter compliance',
+      ],
+    },
+    stats: {
+      heading: 'Bygherrens fremdriftssmerte',
+      items: [
+        { value: '5-28%', label: 'Af alle materialer går til spilde når du bygger' },
+        { value: '7x', label: 'Flyttes materialer i snit efter ankomst til byggeplads' },
+        { value: '41%', label: 'Af affaldet i Danmark stammer fra byggeriet' },
+        { value: '18%', label: 'Af en håndværkers tid går med at håndtere materialer inden de bygger' },
+      ],
+    },
+    mission: 'SiteHub hjælper med at løse de udfordringer ved at levere byggepladslogistik og -drift, der frigiver håndværkertid, minimerer spild, opsamler data og reducerer risici.',
+    service: {
+      title: 'Service',
+      text: 'Vi løser de opgaver, der falder imellem projektets entrepriser og grænseflader og fungerer som "bygherrens mand" på pladsen. Samtidig hjælper vi entreprenørerne og deres håndværkere ved at løse de opgaver, der traditionelt forhindrer dem i at udnytte tiden optimalt på byggepladsen. Det reducerer time-to-market.',
+      cta: 'Læs mere her',
+      ctaHref: '/service/',
+    },
+    tech: {
+      title: 'Teknologi',
+      text: 'Ved hjælp af teknologi bestående af egenudviklet software og avancerede hardwareløsninger opsamler vi data i realtid for materialer, transport, affald mv, så bygherren kan påbegynde certificering/rapportering, allerede mens der bygges. Det understøtter bygherrens compliance.',
+      cta: 'Læs mere her',
+      ctaHref: '/teknologi/',
+    },
+    construction: {
+      title: 'Bedre byggeplads',
+      text1: 'Med rod i SiteHubs ambition om at skabe en bedre og mere bæredygtig byggebranche, der også er mere behagelig og sikker at arbejde i for alle, opererer vi med begrebet "Bedre Byggeplads".',
+      text2: 'Med Bedre Byggeplads ønsker SiteHub at være katalysator for en nødvendig grundlæggende kulturændring i branchen, hvor bygherre påtager sig mere ansvar, entreprenørens rolle omformes, og investeringer i produktivitet øges.',
+      cta: 'Læs mere her',
+      ctaHref: '/bedre-byggeplads/',
+    },
+    consultancy: {
+      title: 'Rådgivningsydelser',
+      text: 'SiteHubs eksperter kan med fordel inddrages tidligt i processen, allerede inden udbud, således at de tekster, der indgår i udbuddet/byggesagsbeskrivelsen sikrer, at entreprenøren leverer de krævede data i forhold til bæredygtighed og dokumentation, og at entreprenørens rolle præciseres i relation til de kompetencer og processer, der reelt er behov for, denne udfører.',
+      subheading: 'Herudover bistår SiteHubs rådgivere med bl.a.:',
+      items: [
+        'Tilbudslister',
+        'Byggepladsdesign',
+        '3D/4D visualiseringer af byggepladsen i byggeriets faser',
+        'Trafik- og flowanalyser',
+        'ESG/CSRD/DGNB/LCA krav til datafangst og hvordan dette understøttes',
+      ],
+      cta: 'Læs mere her',
+      ctaHref: '/raadgivning/',
+    },
+    jobs: {
+      title: 'Job i SiteHub',
+      text: 'SiteHub tilbyder afvekslende og udfordrende arbejdsopgaver, enten på byggepladser i direkte kontakt med f.eks. leverandører, transportører, håndværkere, kunder, på vores lagre, eller på hovedkontoret – alt sammen i et team, hvor der lægges vægt på den gode kultur og det tætte samarbejde. En høj grad af selvstændigt ansvar og stort udviklings- og uddannelsespotentiale. Og en chance for at bidrage positivt til bedre byggepladser.',
+      cta: 'Læs mere her',
+      ctaHref: 'https://sitehub.career.emply.com/da/forside',
+    },
+  },
+  en: {
+    hero: {
+      title: 'Efficient construction site logistics and operations',
+      subtitles: [
+        'Increase safety',
+        'Shorten time-to-market',
+        'Support compliance',
+      ],
+    },
+    stats: {
+      heading: "The construction client's progress pain",
+      items: [
+        { value: '5-28%', label: 'Of all materials are wasted when you build' },
+        { value: '7x', label: 'Is how many times materials are moved around site on average' },
+        { value: '41%', label: 'Of all waste in Denmark is construction waste' },
+        { value: '18%', label: "Of a construction worker's time is spent handling materials before they build" },
+      ],
+    },
+    mission: 'SiteHub helps solve these challenges by providing site logistics and operations that free up worker time, minimise waste, capture data and reduce risk.',
+    service: {
+      title: 'Our services',
+      text: "We solve the tasks that fall between the project's contracts and interfaces and act as the 'client's man' on site. At the same time, we help contractors and their workers by solving the tasks that traditionally prevent them from optimising their time on site. This reduces time-to-market.",
+      cta: 'Learn more',
+      ctaHref: '/en/services/',
+    },
+    tech: {
+      title: 'Our technology',
+      text: "Using technology consisting of proprietary software and advanced hardware solutions, we collect real-time data on materials, transport, waste, etc. so the client can start certification/reporting while construction is underway. This supports the client's compliance.",
+      cta: 'Learn more',
+      ctaHref: '/en/technology/',
+    },
+    construction: {
+      title: 'Better construction site',
+      text1: "Rooted in SiteHub's ambition to create a better and more sustainable construction industry that is also more comfortable and safe to work in for everyone, we operate with the concept 'Better Construction Site'.",
+      text2: 'With Better Construction Site, SiteHub wants to be a catalyst for a necessary fundamental cultural change in the industry, where the client takes on more responsibility, the role of the contractor is reshaped, and investments in productivity are increased.',
+      cta: 'Learn more',
+      ctaHref: '/en/better-construction-site/',
+    },
+    consultancy: {
+      title: 'Consultancy',
+      text: "SiteHub's experts can be involved early in the process, even before tendering, so that the texts included in the tender/building project description ensure that the contractor provides the required data in relation to sustainability and documentation, and that the contractor's role is clarified in relation to the competences and processes they actually need to perform.",
+      subheading: "In addition, SiteHub's advisors assist with e.g:",
+      items: [
+        'Construction site design',
+        'Traffic and flow analyses',
+        'Texts for tender/BSB to ensure contractor data requirements',
+        'Tender lists',
+        '3D/4D visualisations',
+        'ESG/CSRD/DGNB/LCA requirements for data capture',
+      ],
+      cta: 'Learn more',
+      ctaHref: '/en/consultancy/',
+    },
+    jobs: {
+      title: 'Working at SiteHub',
+      text: 'SiteHub offers varied and challenging work, either on construction sites in direct contact with e.g. suppliers, carriers, contractors, and customers; at our warehouses, or at the head office – all in a team that emphasises a good culture and close cooperation. A high degree of independent responsibility and great potential for development and training. And a chance to make a positive contribution to better construction sites.',
+      cta: 'Learn more',
+      ctaHref: 'https://sitehub.career.emply.com/da/forside',
+    },
+  },
+  nn: {
+    hero: {
+      title: 'SiteHub leverer byggeplasslogistikk, -drift og data',
+      subtitles: [
+        'som aukar sikkerheita',
+        'reduserer time-to-market',
+        'støttar compliance',
+      ],
+    },
+    stats: {
+      heading: 'Byggherrens framdriftsmerte',
+      items: [
+        { value: '5-28%', label: 'Av alle materiale går til spille når du bygger' },
+        { value: '7x', label: 'Vert materiale flytta i snitt etter å ha kome til byggeplassen' },
+        { value: '41%', label: 'Av avfallet i Danmark stammar frå byggjebransjen' },
+        { value: '18%', label: 'Av ein handverkar si tid går med å handtere materiale før dei bygger' },
+      ],
+    },
+    mission: 'SiteHub hjelper med å løyse desse utfordringane ved å levere byggeplasslogistikk og -drift som frigjer handverkartid, minimerer svinn, samlar data og reduserer risiko.',
+    service: {
+      title: 'Tenester',
+      text: 'Vi løyser dei oppgåvene som fell mellom prosjektets entrepriser og grenseflater og fungerer som "byggherren sin mann" på plassen.',
+      cta: 'Les meir',
+      ctaHref: '/nn/service-nn/',
+    },
+    tech: {
+      title: 'Teknologi',
+      text: 'Ved hjelp av teknologi beståande av eigenutvikling programvare og avanserte maskinvareløysingar samlar vi data i sanntid for materiale, transport, avfall mv.',
+      cta: 'Les meir',
+      ctaHref: '/nn/teknologi-nn/',
+    },
+    construction: {
+      title: 'Betre byggeplass',
+      text1: 'Med rot i SiteHub sin ambisjon om å skape ein betre og meir berekraftig byggjebransje, opererer vi med omgrepet "Betre Byggeplass".',
+      text2: 'Med Betre Byggeplass ynskjer SiteHub å vere katalysator for ei naudsynt grunnleggjande kulturendring i bransjen.',
+      cta: 'Les meir',
+      ctaHref: '/nn/bedre-byggeplass/',
+    },
+    consultancy: {
+      title: 'Rådgjeving',
+      text: 'SiteHub sine ekspertar kan med fordel involverast tidleg i prosessen, allereie før utlysing.',
+      subheading: 'I tillegg hjelper SiteHub sine rådgjevarar med bl.a.:',
+      items: [
+        'Byggeplassdesign',
+        'Trafikk- og flytanalysar',
+        'Tilbodslister',
+        '3D/4D visualiseringar',
+        'ESG/CSRD/DGNB/LCA krav til datafangst',
+      ],
+      cta: 'Les meir',
+      ctaHref: '/nn/radgivning/',
+    },
+    jobs: {
+      title: 'Jobb i SiteHub',
+      text: 'SiteHub tilbyr varierte og utfordrande arbeidsoppgåver i eit team der det vert lagt vekt på god kultur og tett samarbeid.',
+      cta: 'Les meir',
+      ctaHref: 'https://sitehub.career.emply.com/da/forside',
+    },
+  },
+  sv: {
+    hero: {
+      title: 'SiteHub levererar byggplatslogistik, -drift och data',
+      subtitles: [
+        'som ökar säkerheten',
+        'reducerar time-to-market',
+        'stöder compliance',
+      ],
+    },
+    stats: {
+      heading: 'Byggherrens framstegsmärta',
+      items: [
+        { value: '5-28%', label: 'Av alla material går till spillo när du bygger' },
+        { value: '7x', label: 'Flyttas material i snitt efter ankomst till byggplatsen' },
+        { value: '41%', label: 'Av avfallet i Danmark härstammar från byggsektorn' },
+        { value: '18%', label: 'Av en hantverkares tid går åt att hantera material innan de bygger' },
+      ],
+    },
+    mission: 'SiteHub hjälper till att lösa dessa utmaningar genom att leverera byggplatslogistik och -drift som frigör hantverkartid, minimerar svinn, samlar data och reducerar risker.',
+    service: {
+      title: 'Tjänster',
+      text: 'Vi löser de uppgifter som faller mellan projektets entreprenader och fungerar som "byggherrens man" på platsen.',
+      cta: 'Läs mer',
+      ctaHref: '/sv/service-sv/',
+    },
+    tech: {
+      title: 'Teknologi',
+      text: 'Med hjälp av teknologi bestående av egenutvecklad mjukvara och avancerade hårdvarulösningar samlar vi data i realtid.',
+      cta: 'Läs mer',
+      ctaHref: '/sv/teknologi-sv/',
+    },
+    construction: {
+      title: 'Bättre byggplats',
+      text1: 'Med rot i SiteHubs ambition att skapa en bättre och mer hållbar byggbransch opererar vi med konceptet "Bättre Byggplats".',
+      text2: 'Med Bättre Byggplats vill SiteHub vara katalysator för en nödvändig grundläggande kulturförändring i branschen.',
+      cta: 'Läs mer',
+      ctaHref: '/sv/battre-byggplats/',
+    },
+    consultancy: {
+      title: 'Rådgivning',
+      text: 'SiteHubs experter kan med fördel involveras tidigt i processen, redan innan upphandling.',
+      subheading: 'Dessutom bistår SiteHubs rådgivare med bl.a.:',
+      items: [
+        'Byggplatsdesign',
+        'Trafik- och flödesanalyser',
+        'Anbudslistor',
+        '3D/4D-visualiseringar',
+        'ESG/CSRD/DGNB/LCA-krav för datainsamling',
+      ],
+      cta: 'Läs mer',
+      ctaHref: '/sv/radgivning-sv/',
+    },
+    jobs: {
+      title: 'Jobb på SiteHub',
+      text: 'SiteHub erbjuder varierade och utmanande arbetsuppgifter i ett team som betonar god kultur och nära samarbete.',
+      cta: 'Läs mer',
+      ctaHref: 'https://sitehub.career.emply.com/da/forside',
+    },
+  },
+  nl: {
+    hero: {
+      title: 'SiteHub levert bouwplaatslogistiek, -beheer en data',
+      subtitles: [
+        'die de veiligheid verhoogt',
+        'time-to-market verkort',
+        'compliance ondersteunt',
+      ],
+    },
+    stats: {
+      heading: 'De voortgangspijn van de opdrachtgever',
+      items: [
+        { value: '5-28%', label: 'Van alle materialen wordt verspild bij het bouwen' },
+        { value: '7x', label: 'Worden materialen gemiddeld verplaatst na aankomst op de bouwplaats' },
+        { value: '41%', label: 'Van al het afval in Denemarken is bouwafval' },
+        { value: '18%', label: 'Van de tijd van een vakman gaat op aan het hanteren van materialen' },
+      ],
+    },
+    mission: 'SiteHub helpt deze uitdagingen op te lossen door bouwplaatslogistiek en -beheer te leveren die vakmanstijd vrijmaakt, verspilling minimaliseert, data verzamelt en risico\'s vermindert.',
+    service: {
+      title: 'Diensten',
+      text: 'Wij lossen de taken op die tussen de contracten en interfaces van het project vallen en fungeren als "de man van de opdrachtgever" op de locatie.',
+      cta: 'Lees meer',
+      ctaHref: '/nl/service-nl/',
+    },
+    tech: {
+      title: 'Technologie',
+      text: 'Met behulp van technologie bestaande uit eigen software en geavanceerde hardware-oplossingen verzamelen wij realtime data.',
+      cta: 'Lees meer',
+      ctaHref: '/nl/technologie/',
+    },
+    construction: {
+      title: 'Betere bouwplaats',
+      text1: 'Geworteld in SiteHubs ambitie om een betere en duurzamere bouwsector te creëren, werken wij met het concept "Betere Bouwplaats".',
+      text2: 'Met Betere Bouwplaats wil SiteHub een katalysator zijn voor een noodzakelijke fundamentele cultuurverandering in de sector.',
+      cta: 'Lees meer',
+      ctaHref: '/nl/better-construction-site-nl/',
+    },
+    consultancy: {
+      title: 'Advies',
+      text: 'De experts van SiteHub kunnen al vroeg in het proces worden betrokken, zelfs voor de aanbesteding.',
+      subheading: 'Daarnaast helpen de adviseurs van SiteHub met o.a.:',
+      items: [
+        'Bouwplaatsontwerp',
+        'Verkeers- en stroomanalyses',
+        'Offerlijsten',
+        '3D/4D-visualisaties',
+        'ESG/CSRD/DGNB/LCA-eisen voor dataverzameling',
+      ],
+      cta: 'Lees meer',
+      ctaHref: '/nl/advies/',
+    },
+    jobs: {
+      title: 'Werken bij SiteHub',
+      text: 'SiteHub biedt gevarieerd en uitdagend werk in een team waar goede cultuur en nauwe samenwerking centraal staan.',
+      cta: 'Lees meer',
+      ctaHref: 'https://sitehub.career.emply.com/da/forside',
+    },
+  },
+} as const;
+
+export type HomeContent = (typeof homeContent)[keyof typeof homeContent];

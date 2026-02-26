@@ -1,0 +1,115 @@
+---
+import type { Lang } from '../i18n/index';
+import { consultancyContent } from '../content/data/consultancy';
+import HeroSection from '../components/HeroSection.astro';
+import IconList from '../components/IconList.astro';
+
+// Images
+import heroBg from '../assets/images/mjT6roGY.jpeg';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const c = consultancyContent[lang];
+---
+
+<!-- 1. Hero Section -->
+<HeroSection
+  title={c.hero.title}
+  subtitle={c.hero.subtitle}
+  bgImage={heroBg}
+/>
+
+<!-- 2. Consultancy Services List -->
+<section class="max-w-[1528px] mx-auto" style="padding: 128px 20px;">
+  <div class="flex flex-col gap-8">
+    <h2 class="font-semibold text-sitehub-dark" style="font-size: clamp(26px, 4vw, 64px); line-height: 1.2em;">
+      {c.services.title}
+    </h2>
+    <p style="font-size: clamp(18px, 1.5vw, 24px); line-height: 1.5;">
+      {c.services.text}
+    </p>
+    <IconList items={c.services.items} />
+  </div>
+</section>
+
+<!-- 3. 4D Planning Section -->
+<section style="background-color: #FFD4A61A; padding: 128px 20px;">
+  <div class="max-w-[1528px] mx-auto flex flex-col gap-8">
+    <h2 class="font-semibold text-sitehub-dark" style="font-size: clamp(26px, 4vw, 64px); line-height: 1.2em;">
+      {c.planning4d.title}
+    </h2>
+    <p style="font-size: clamp(18px, 1.5vw, 24px); line-height: 1.5;">
+      {c.planning4d.text1}
+    </p>
+    <p style="font-size: clamp(18px, 1.5vw, 24px); line-height: 1.5;">
+      {c.planning4d.text2}
+    </p>
+    <p class="font-semibold" style="font-size: clamp(18px, 1.5vw, 24px); line-height: 1.5;">
+      {c.planning4d.text3}
+    </p>
+  </div>
+</section>
+
+<!-- 4. Financial Overview -->
+<section class="max-w-[1528px] mx-auto" style="padding: 128px 20px;">
+  <div class="flex flex-col gap-8">
+    <h2 class="font-semibold text-sitehub-dark" style="font-size: clamp(26px, 4vw, 48px); line-height: 1.2em;">
+      {c.financial.title}
+    </h2>
+    <p style="font-size: clamp(18px, 1.5vw, 24px); line-height: 1.5;">
+      {c.financial.text}
+    </p>
+  </div>
+</section>
+
+<!-- 5. Terrain Visualisation -->
+<section style="background-color: #FFD4A61A; padding: 128px 20px;">
+  <div class="max-w-[1528px] mx-auto flex flex-col gap-8">
+    <h2 class="font-semibold text-sitehub-dark" style="font-size: clamp(26px, 4vw, 48px); line-height: 1.2em;">
+      {c.terrain.title}
+    </h2>
+    <p style="font-size: clamp(18px, 1.5vw, 24px); line-height: 1.5;">
+      {c.terrain.text}
+    </p>
+  </div>
+</section>
+
+<!-- 6. Sustainability -->
+<section class="max-w-[1528px] mx-auto" style="padding: 128px 20px;">
+  <div class="flex flex-col gap-8">
+    <h2 class="font-semibold text-sitehub-dark" style="font-size: clamp(26px, 4vw, 48px); line-height: 1.2em;">
+      {c.sustainability.title}
+    </h2>
+    <p style="font-size: clamp(18px, 1.5vw, 24px); line-height: 1.5;">
+      {c.sustainability.text}
+    </p>
+  </div>
+</section>
+
+<!-- 7. Customised Solutions -->
+<section style="background-color: #FFD4A61A; padding: 128px 20px;">
+  <div class="max-w-[1528px] mx-auto flex flex-col gap-8">
+    <h2 class="font-semibold text-sitehub-dark" style="font-size: clamp(26px, 4vw, 48px); line-height: 1.2em;">
+      {c.customised.title}
+    </h2>
+    <p style="font-size: clamp(18px, 1.5vw, 24px); line-height: 1.5;">
+      {c.customised.text}
+    </p>
+  </div>
+</section>
+
+<style>
+  @media (max-width: 1024px) {
+    section {
+      padding: 64px 20px !important;
+    }
+  }
+  @media (max-width: 767px) {
+    section {
+      padding: 50px 20px !important;
+    }
+  }
+</style>
