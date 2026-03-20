@@ -160,3 +160,18 @@ Key decisions made during extraction:
 - **Package manager:** pnpm (specified in `package.json` `packageManager` field)
 - **TypeScript:** Used everywhere (Astro components use TypeScript in frontmatter)
 - **No direct push to main** — use feature branches + PRs
+
+<!-- CODEX_DEPLOYMENT_CONTEXT:START -->
+## Deployment Context (Auto-Managed)
+
+- Last verified: **2026-02-28 23:51:44 CET**
+- Project path: /Users/christofferschandorff/Projects/wp-gh
+- Remote slug: sitehub-dk/sitehub.dk
+- Deployment artifacts detected: -
+- Workflow files detected: .github/workflows/deploy.yml
+- Domain targets: sitehub.cloud<br>sitehub.dk<br>test.sitehub.cloud
+- SSH/IP references: -
+- Latest CI/deploy run: Deploy to GitHub Pages (completed/success, 2026-02-26T22:32:08Z)
+
+Use INFRASTRUCTURE.md in this repo for the canonical per-repo deployment check snapshot.
+<!-- CODEX_DEPLOYMENT_CONTEXT:END -->
