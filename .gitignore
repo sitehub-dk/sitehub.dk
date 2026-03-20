@@ -7,3 +7,5 @@ tools/extract/extracted/
 .DS_Store
 .env
 .env.*
+coverage/
+.next/
